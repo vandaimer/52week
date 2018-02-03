@@ -54,5 +54,12 @@ const styles = StyleSheet.create({
     margin: 16,
     borderBottomWidth: 1,
     backgroundColor: 'green'
+  },
+  command: {
+    width: 100,
+    margin: 16,
+    height: 35,
+    marginTop: 25,
+    alignItems: "center",
   }
 });
