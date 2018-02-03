@@ -16,15 +16,21 @@ import {
 import R from 'ramda';
 
 export default class WeekItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isDeposited : false
+    };
+  }
+
   wasDeposited = () => {
-    
+    const isDeposited = !this.state.isDeposited;
+    this.setState({ isDeposited: isDeposited });
   }
 
   render() {
-    const item = {};
-
-    return (
-       <View style={styles.itemList}>
+     return (
+       <View style={[(this.state.isDeposited) ? styles.itemListDeposited : styles.itemList]}>
           <Text style={styles.text}>Depositar {this.props.label}</Text>
           <View style={styles.command}>
             <Button
