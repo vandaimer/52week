@@ -14,44 +14,26 @@ import {
   ScrollView
 } from 'react-native';
 import R from 'ramda';
-import WeekItem from '../WeekItem';
 
-
-export default class WeekList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      weeks : []
-    };
-
-    const weeks = R.range(1, 53);
-    const incrementDeposit = 5;
-    var toDeposit = incrementDeposit;
-
-    R.map(index => {
-        this.state.weeks.push({
-          isDeposited: false,
-          label: toDeposit,
-          index
-        });
-
-        toDeposit += incrementDeposit;
-    }, weeks);
+export default class WeekItem extends Component {
+  wasDeposited = () => {
+    
   }
 
   render() {
-    const createNewItem = (item) => {
-      return (
-        <WeekItem key={item.index} index={item.index} label={item.label} />
-      );
-    };
+    const item = {};
 
     return (
-      <View style={styles.container}>
-        <ScrollView>
-          {R.map(createNewItem, this.state.weeks)}
-        </ScrollView>
-      </View>
+       <View style={styles.itemList}>
+          <Text style={styles.text}>Depositar {this.props.label}</Text>
+          <View style={styles.command}>
+            <Button
+                  onPress={() => {
+                    this.wasDeposited();
+                  }}
+                  title="Depositado"/>
+          </View>
+       </View>
     );
   }
 }
