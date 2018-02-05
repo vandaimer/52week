@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import {
   StyleSheet,
   Text,
@@ -6,18 +8,24 @@ import {
   Button,
 } from 'react-native';
 
+import * as weekItemActions from './actions';
 
-export default class WeekItem extends Component {
+class WeekItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isDeposited : false
     };
+    console.log(props);
   }
 
   wasDeposited = () => {
     const isDeposited = !this.state.isDeposited;
-    this.setState({ isDeposited: isDeposited });
+    const value = parseInt(this.props.label);
+    const howDeposited = isDeposited ? value : -1 * value;
+
+    this.props.addDeposit(howDeposited);
+    this.setState({ isDeposited });
   }
 
   render() {
@@ -33,6 +41,11 @@ export default class WeekItem extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(weekItemActions, dispatch);
+
+export default connect(null, mapDispatchToProps)(WeekItem);
 
 const styles = StyleSheet.create({
   text: {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
 	StyleSheet,
 	Text,
@@ -6,7 +7,12 @@ import {
 } from 'react-native';
 import WeekList from './components/WeekList';
 
-export default class Main extends Component {
+class Main extends Component {
+
+	constructor(props) {
+		super(props)
+		console.log(props);
+	}
 
 	render() {
 	  return (
@@ -15,13 +21,21 @@ export default class Main extends Component {
 	      <View style={styles.mainBottomNavBar}>
 	       	<View style={styles.contentBottonNavBar}>
 	      		<Text style={styles.text}>Depositado R$ 100,00</Text>
-	      		<Text style={styles.text}>Meta R$ 100,00</Text>
+	      		<Text style={styles.text}> {this.props.total}</Text>
 	      	</View>
 	      </View>
 	    </View>
 	  );
 	}
 }
+
+const mapStateToProps = state => {
+	return {
+  	total: state.totalDeposited,
+	};
+}
+
+export default connect(mapStateToProps)(Main);
 
 const styles = StyleSheet.create({
 	main: {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   StyleSheet,
   View,
@@ -8,7 +9,7 @@ import R from 'ramda';
 import WeekItem from '../WeekItem';
 
 
-export default class WeekList extends Component {
+class WeekList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,6 +47,8 @@ export default class WeekList extends Component {
     );
   }
 }
+
+export default connect()(WeekList);
 
 const styles = StyleSheet.create({
   container: {
