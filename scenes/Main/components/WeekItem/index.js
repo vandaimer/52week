@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import * as actions from '../actions';
 import {
   StyleSheet,
   Text,
@@ -8,7 +9,6 @@ import {
   Button,
 } from 'react-native';
 
-import * as actions from '../actions';
 
 class WeekItem extends Component {
   constructor(props) {
@@ -21,9 +21,13 @@ class WeekItem extends Component {
   wasDeposited = () => {
     const isDeposited = !this.state.isDeposited;
     const value = parseInt(this.props.label);
-    const howDeposited = isDeposited ? value : -1 * value;
 
-    this.props.addDeposit(howDeposited);
+    if(isDeposited) {
+      this.props.addToSavingsAccount(value);
+    } else {
+      this.props.removeFromSavingsAccount(value);
+    }
+
     this.setState({ isDeposited });
   }
 
