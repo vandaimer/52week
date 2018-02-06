@@ -6,15 +6,16 @@ import {
 	View
 } from 'react-native';
 
+
 class BottomNavBar extends Component {
 	render() {
 	  return (
-        <View style={styles.mainBottomNavBar}>
+      <View style={styles.mainBottomNavBar}>
         <View style={styles.contentBottonNavBar}>
-            <Text style={styles.text}>Depositado R$ 100,00</Text>
-            <Text style={styles.text}> {this.props.total}</Text>
+          <Text style={styles.text}>Depositado R$ 100,00</Text>
+          <Text style={styles.text}> {this.props.total}</Text>
         </View>
-        </View>
+      </View>
 	  );
 	}
 }
