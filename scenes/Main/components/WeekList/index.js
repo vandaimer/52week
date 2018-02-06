@@ -40,7 +40,7 @@ class WeekList extends Component {
   render() {
     const createNewItem = (item) => {
       return (
-        <WeekItem key={item.index} index={item.index} label={item.label} />
+        <WeekItem key={item.index} week={item.index} label={item.label} />
       );
     };
 

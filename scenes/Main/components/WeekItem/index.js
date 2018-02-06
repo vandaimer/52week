@@ -34,7 +34,7 @@ class WeekItem extends Component {
   render() {
      return (
        <View style={[(this.state.isDeposited) ? styles.itemListDeposited : styles.itemList]}>
-          <Text style={styles.text}>Depositar {this.props.label}</Text>
+          <Text style={styles.text}>Semana {this.props.week}</Text>
           <View style={styles.command}>
             <Button
                   onPress={this.changeAmountSavingsAccount}
