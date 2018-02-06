@@ -21,9 +21,14 @@ class BottomNavBar extends Component {
 }
 
 const mapStateToProps = state => {
-	const { totalSavingsAmount } = state;
+	const {
+		totalSavingsAmount,
+		savingsAccountInfo,
+	} = state;
+
 	return {
-  	totalSavingsAmount
+		totalSavingsAmount,
+		savingsAccountInfo,
 	};
 }
 
