@@ -27,8 +27,8 @@ class WeekList extends Component {
 
         this.state.weeks.push({
           isDeposited: false,
-          label: value,
-          index
+          value,
+          index,
         });
 
         meta += value;
@@ -40,7 +40,7 @@ class WeekList extends Component {
   render() {
     const createNewItem = (item) => {
       return (
-        <WeekItem key={item.index} week={item.index} label={item.label} />
+        <WeekItem key={item.index} week={item.index} value={item.value} />
       );
     };
 

@@ -20,7 +20,7 @@ class WeekItem extends Component {
 
   changeAmountSavingsAccount = () => {
     const isDeposited = !this.state.isDeposited;
-    const value = parseInt(this.props.label);
+    const value = parseInt(this.props.value);
 
     if(isDeposited) {
       this.props.addToSavingsAccount(value);
