@@ -1,4 +1,4 @@
-export default function totalDeposited(state = 0, action) {
+export default function totalSavingsAmount(state = 0, action) {
 	switch(action.type) {
 		case 'ADD_TO_SAVINGS_ACCOUNT_AMOUNT':
 			return (state + action.value);

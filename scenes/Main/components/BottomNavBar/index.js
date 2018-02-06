@@ -13,7 +13,7 @@ class BottomNavBar extends Component {
       <View style={styles.mainBottomNavBar}>
         <View style={styles.contentBottonNavBar}>
           <Text style={styles.text}>Depositado R$ 100,00</Text>
-          <Text style={styles.text}> {this.props.total}</Text>
+          <Text style={styles.text}> {this.props.totalSavingsAmount}</Text>
         </View>
       </View>
 	  );
@@ -21,8 +21,9 @@ class BottomNavBar extends Component {
 }
 
 const mapStateToProps = state => {
+	const { totalSavingsAmount } = state;
 	return {
-  	total: state.totalDeposited,
+  	totalSavingsAmount
 	};
 }
 
