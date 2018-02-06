@@ -18,7 +18,7 @@ class WeekItem extends Component {
     };
   }
 
-  wasDeposited = () => {
+  changeAmountSavingsAccount = () => {
     const isDeposited = !this.state.isDeposited;
     const value = parseInt(this.props.label);
 
@@ -37,7 +37,7 @@ class WeekItem extends Component {
           <Text style={styles.text}>Depositar {this.props.label}</Text>
           <View style={styles.command}>
             <Button
-                  onPress={this.wasDeposited}
+                  onPress={this.changeAmountSavingsAccount}
                   title="Depositado"/>
           </View>
        </View>
