@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../actions';
 import {
   StyleSheet,
   View,
@@ -17,18 +19,22 @@ class WeekList extends Component {
     };
 
     const weeks = R.range(1, 53);
-    const incrementDeposit = 5;
-    var toDeposit = incrementDeposit;
+    const mininalDeposit = 5;
+    let meta = 0;
 
     R.map(index => {
+        const value = index * mininalDeposit;
+
         this.state.weeks.push({
           isDeposited: false,
-          label: toDeposit,
+          label: value,
           index
         });
 
-        toDeposit += incrementDeposit;
+        meta += value;
     }, weeks);
+
+    this.props.maxSavingsAccoutAmount(meta);
   }
 
   render() {
@@ -48,7 +54,10 @@ class WeekList extends Component {
   }
 }
 
-export default connect()(WeekList);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(actions, dispatch);
+
+export default connect(null, mapDispatchToProps)(WeekList);
 
 const styles = StyleSheet.create({
   container: {
