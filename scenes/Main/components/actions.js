@@ -11,3 +11,10 @@ export function removeFromSavingsAccount(value) {
 		value,
 	}
 }
+
+export function maxSavingsAccoutAmount(value) {
+	return {
+		type: 'MAX_SAVINGS_ACCOUNT_AMOUNT',
+		value,
+	}
+}
