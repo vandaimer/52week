@@ -8,7 +8,7 @@ import {
   Button,
 } from 'react-native';
 
-import * as weekItemActions from './actions';
+import * as actions from '../actions';
 
 class WeekItem extends Component {
   constructor(props) {
@@ -16,7 +16,6 @@ class WeekItem extends Component {
     this.state = {
       isDeposited : false
     };
-    console.log(props);
   }
 
   wasDeposited = () => {
@@ -43,7 +42,7 @@ class WeekItem extends Component {
 }
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(weekItemActions, dispatch);
+  bindActionCreators(actions, dispatch);
 
 export default connect(null, mapDispatchToProps)(WeekItem);
 
