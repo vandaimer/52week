@@ -12,8 +12,8 @@ class BottomNavBar extends Component {
 	  return (
       <View style={styles.mainBottomNavBar}>
         <View style={styles.contentBottonNavBar}>
-          <Text style={styles.text}>Depositado R$ 100,00</Text>
-          <Text style={styles.text}> {this.props.totalSavingsAmount}</Text>
+          <Text style={styles.text}>Meta R$ {this.props.savingsAccountInfo}</Text>
+          <Text style={styles.text}>Já depositado R$ {this.props.totalSavingsAmount}</Text>
         </View>
       </View>
 	  );
