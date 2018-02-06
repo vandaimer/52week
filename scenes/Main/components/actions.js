@@ -1,6 +1,13 @@
-export function addDeposit(value) {
+export function addToSavingsAccount(value) {
 	return {
-		type: 'NEW_DEPOIST',
+		type: 'ADD_TO_SAVINGS_ACCOUNT_AMOUNT',
+		value,
+	}
+}
+
+export function removeFromSavingsAccount(value) {
+	return {
+		type: 'REMOVE_FROM_SAVINGS_ACCOUNT_AMOUNT',
 		value,
 	}
 }
