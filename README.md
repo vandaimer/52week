@@ -19,5 +19,6 @@ Obs: I just run with `react-native run-android`, maybe when you run with `react-
 - Persist the state
 - Improve the layout
 - Add a icon (icon that show in android launcher, for example)
+- Implement tests
 
 The project are in construction, not have all the features to help you complete the challenge.
