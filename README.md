@@ -13,4 +13,11 @@ After you run `npm install` or using yarn, you can run at terminal `react-native
 
 Obs: I just run with `react-native run-android`, maybe when you run with `react-native run-ios` you can get some error.
 
-	The project are in construction, not have all the features to help you complete the challenge.
+
+# Next features
+
+- Persist the state
+- Improve the layout
+- Add a icon (icon that show in android launcher, for example)
+
+The project are in construction, not have all the features to help you complete the challenge.
