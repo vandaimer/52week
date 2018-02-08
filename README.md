@@ -6,4 +6,11 @@ This project implement the follow idea.
 
 In one year and one month you will have R$ 6.890,00.
 
-The project are in construction, not have all the features to help you complete the challenge.
+# How test ?
+
+
+After you run `npm install` or using yarn, you can run at terminal `react-native run-android` or `react-native run-ios`.
+
+Obs: I just run with `react-native run-android`, maybe when you run with `react-native run-ios` you can get some error.
+
+	The project are in construction, not have all the features to help you complete the challenge.
