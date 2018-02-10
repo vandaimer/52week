@@ -1,13 +1,13 @@
 export function addToSavingsAccount(value) {
 	return {
-		type: 'ADD_TO_SAVINGS_ACCOUNT_AMOUNT',
+		type: 'ASYNC_ADD_TO_SAVINGS_ACCOUNT_AMOUNT',
 		value,
 	}
 }
 
 export function removeFromSavingsAccount(value) {
 	return {
-		type: 'REMOVE_FROM_SAVINGS_ACCOUNT_AMOUNT',
+		type: 'ASYNC_REMOVE_FROM_SAVINGS_ACCOUNT_AMOUNT',
 		value,
 	}
 }
