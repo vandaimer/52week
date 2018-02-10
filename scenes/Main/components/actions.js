@@ -18,9 +18,3 @@ export function maxSavingsAccoutAmount(value) {
 		value,
 	}
 }
-
-export function asyncAction() {
-	return {
-		type: 'ASYNC_ACTION',
-	}
-}
