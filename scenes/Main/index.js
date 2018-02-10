@@ -8,6 +8,7 @@ import {
 import WeekList from './components/WeekList';
 import BottomNavBar from './components/BottomNavBar';
 
+
 class Main extends Component {
 
 	constructor(props) {

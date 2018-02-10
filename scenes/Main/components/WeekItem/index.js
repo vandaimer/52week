@@ -28,6 +28,8 @@ class WeekItem extends Component {
       this.props.removeFromSavingsAccount(value);
     }
 
+    this.props.asyncAction();
+
     this.setState({ isDeposited });
   }
 
