@@ -8,8 +8,15 @@ function* watchAddToSavingsAccountAmount () {
   })
 };
 
+function* watchRemoveFromSavingsAccountAmount () {
+  yield takeEvery('ASYNC_REMOVE_FROM_SAVINGS_ACCOUNT_AMOUNT', function* (action) {
+    yield put({type: 'REMOVE_FROM_SAVINGS_ACCOUNT_AMOUNT', value: action.value})
+  })
+};
+
 export default function* rootSaga() {
   yield all([
     watchAddToSavingsAccountAmount(),
+    watchRemoveFromSavingsAccountAmount(),
   ])
 }
