@@ -14,11 +14,14 @@
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
-    "start": "react-native-scripts start",
-    "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
+    "eject": "react-native-scripts eject",
     "ios": "react-native-scripts ios",
-    "test": "node node_modules/jest/bin/jest.js"
+    "lint": "esw --color --ext .js --ext .jsx --no-ignore .",
+    "lint:watch": "npm run lint -- --watch",
+    "react:start": "react-native-scripts start",
+    "start": "npm-run-all -p react:start lint:watch",
+    "test": "node ./node_modules/jest/bin/jest.js"
   },
   "jest": {
     "preset": "jest-expo"
