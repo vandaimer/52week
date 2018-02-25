@@ -1,44 +1,54 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 import {
   StyleSheet,
   View,
-  ScrollView
+  ScrollView,
 } from 'react-native';
 import R from 'ramda';
 import WeekItem from '../WeekItem';
 
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+});
+
+
 class WeekList extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
-      weeks : []
+      weeks: [],
     };
 
     const weeks = R.range(1, 53);
     const mininalDeposit = 5;
     let meta = 0;
 
-    R.map(index => {
-        const value = index * mininalDeposit;
+    R.forEach(index => {
+      const value = index * mininalDeposit;
 
-        this.state.weeks.push({
-          isDeposited: false,
-          value,
-          index,
-        });
+      this.state.weeks.push({
+        isDeposited: false,
+        value,
+        index,
+      });
 
-        meta += value;
+      meta += value;
     }, weeks);
 
     this.props.maxSavingsAccoutAmount(meta);
   }
 
-  render() {
-    const createNewItem = (item) => {
+  render () {
+    const createNewItem = item => {
       return (
         <WeekItem key={item.index} week={item.index} value={item.value} />
       );
@@ -57,12 +67,8 @@ class WeekList extends Component {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(actions, dispatch);
 
-export default connect(null, mapDispatchToProps)(WeekList);
+WeekList.propTypes = {
+  maxSavingsAccoutAmount: PropTypes.func.isRequired,
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#F5FCFF',
-  }
-});
+export default connect(null, mapDispatchToProps)(WeekList);
