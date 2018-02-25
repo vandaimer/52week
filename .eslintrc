@@ -13,6 +13,7 @@
     "comma-dangle": [1, "always-multiline"],
     "func-names": 0,
     "max-len": 0,
+    "class-methods-use-this": 0,
     "no-confusing-arrow": 0,
     "no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
     "no-multiple-empty-lines": 1,
