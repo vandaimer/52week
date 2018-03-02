@@ -4,6 +4,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import ToolBar from './components/ToolBar';
 import WeekList from './components/WeekList';
 import BottomNavBar from './components/BottomNavBar';
 
@@ -11,19 +12,7 @@ import BottomNavBar from './components/BottomNavBar';
 const styles = StyleSheet.create({
   main: {
     flex: 1,
-  },
-  mainBottomNavBar: {
-    height: 75,
-  },
-  contentBottonNavBar: {
-    flex: 1,
-    flexDirection: 'row',
-    margin: 16,
-    alignItems: 'center',
-    justifyContent: 'space-around',
-  },
-  text: {
-    fontWeight: 'bold',
+    alignSelf: 'stretch',
   },
 });
 
@@ -36,6 +25,7 @@ class Main extends Component {
   render () {
     return (
       <View style={styles.main}>
+        <ToolBar />
         <WeekList />
         <BottomNavBar />
       </View>
@@ -44,4 +34,3 @@ class Main extends Component {
 }
 
 export default connect()(Main);
-

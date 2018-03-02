@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'white',
   },
 });
 
@@ -34,6 +34,8 @@ class WeekList extends Component {
 
     R.forEach(index => {
       const value = index * mininalDeposit;
+
+      // const percentage = value * 100 / savingsAccountInfo;
 
       this.state.weeks.push({
         isDeposited: false,
