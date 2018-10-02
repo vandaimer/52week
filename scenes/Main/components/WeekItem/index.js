@@ -3,14 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TouchableOpacity,
-} from 'react-native';
-
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 
 const styles = StyleSheet.create({
   text: {
@@ -25,9 +18,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: '#bbb',
   },
-  itemList: {
-
-  },
+  itemList: {},
   itemListDeposited: {
     backgroundColor: 'rgba(0,0,0,0.01)',
   },
@@ -61,19 +52,19 @@ const styles = StyleSheet.create({
     marginRight: 32,
   },
   label: {
-      fontWeight: 'bold',
-      fontSize: 10,
-      color: '#9B9B9B',
+    fontWeight: 'bold',
+    fontSize: 10,
+    color: '#9B9B9B',
   },
 });
 
 class WeekItem extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       isDeposited: false,
-      textValue:'Depositar',
-      textColor: '#42ABF4'
+      textValue: 'Depositar',
+      textColor: '#42ABF4',
     };
   }
 
@@ -84,31 +75,43 @@ class WeekItem extends Component {
     if (isDeposited) {
       this.props.addToSavingsAccount(value);
       this.setState({
-          textValue: 'Depositado',
-          textColor: 'white'
+        textValue: 'Depositado',
+        textColor: 'white',
       });
     } else {
       this.props.removeFromSavingsAccount(value);
       this.setState({
-          textValue: 'Depositar',
-          textColor: '#42ABF4'
+        textValue: 'Depositar',
+        textColor: '#42ABF4',
       });
     }
 
     this.setState({ isDeposited });
-  }
+  };
 
-  render () {
+  render() {
     return (
-      <View style={[(this.state.isDeposited) ? styles.itemListDeposited : styles.itemList, styles.basicList]}>
+      <View
+        style={[
+          this.state.isDeposited ? styles.itemListDeposited : styles.itemList,
+          styles.basicList,
+        ]}
+      >
         <View>
           <Text style={[styles.text, styles.weekText]}>Semana {this.props.week}</Text>
           <Text style={styles.label}>VALOR: R$ {this.props.value}</Text>
         </View>
-          <TouchableOpacity style={[(this.state.isDeposited) ? styles.btnDeposited : styles.btnNotDeposited, styles.basicCommand]}
-           onPress={this.changeAmountSavingsAccount}>
-            <Text style={(this.state.isDeposited) ? styles.textDeposited : styles.textNotDeposited}>{this.state.textValue}</Text>
-          </TouchableOpacity>
+        <TouchableOpacity
+          style={[
+            this.state.isDeposited ? styles.btnDeposited : styles.btnNotDeposited,
+            styles.basicCommand,
+          ]}
+          onPress={this.changeAmountSavingsAccount}
+        >
+          <Text style={this.state.isDeposited ? styles.textDeposited : styles.textNotDeposited}>
+            {this.state.textValue}
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -121,7 +124,9 @@ WeekItem.propTypes = {
   removeFromSavingsAccount: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(actions, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-export default connect(null, mapDispatchToProps)(WeekItem);
+export default connect(
+  null,
+  mapDispatchToProps,
+)(WeekItem);
