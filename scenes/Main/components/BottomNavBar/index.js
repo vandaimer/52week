@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Platform,
-} from 'react-native';
-
+import { StyleSheet, Text, View, Platform } from 'react-native';
 
 const styles = StyleSheet.create({
   mainBottomNavBar: {
@@ -43,18 +37,19 @@ const styles = StyleSheet.create({
     width: 132,
     flexDirection: 'column',
   },
-
 });
 
-
 class BottomNavBar extends Component {
-  render () {
+  render() {
     return (
       <View style={[styles.mainBottomNavBar, styles.boxShadow]}>
         <View style={styles.contentBottonNavBar}>
-        <View style={styles.labeledBox1}>
-          <Text style={styles.text}>META</Text>
-          <Text style={styles.textAmount}>R$ {this.props.savingsAccountInfo} ({this.props.savingsPercentage}%)</Text>
+          <View style={styles.labeledBox1}>
+            <Text style={styles.text}>META</Text>
+            <Text style={styles.textAmount}>
+              R$ {this.props.savingsAccountInfo} ({this.props.savingsPercentage}
+              %)
+            </Text>
           </View>
           <View style={styles.labeledBox2}>
             <Text style={styles.text}>DEPOSITADO </Text>
@@ -67,12 +62,9 @@ class BottomNavBar extends Component {
 }
 
 const mapStateToProps = state => {
-  const {
-    totalSavingsAmount,
-    savingsAccountInfo,
-  } = state;
+  const { totalSavingsAmount, savingsAccountInfo } = state;
 
-  var savingsPercentage = totalSavingsAmount * 100 / savingsAccountInfo;
+  var savingsPercentage = (totalSavingsAmount * 100) / savingsAccountInfo;
   var savingsPercentage = savingsPercentage.toFixed(1);
 
   return {
@@ -86,6 +78,5 @@ BottomNavBar.propTypes = {
   savingsAccountInfo: PropTypes.number.isRequired,
   totalSavingsAmount: PropTypes.number.isRequired,
 };
-
 
 export default connect(mapStateToProps)(BottomNavBar);

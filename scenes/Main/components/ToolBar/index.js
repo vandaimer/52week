@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Platform,
-} from 'react-native';
-
+import { StyleSheet, Text, View, Platform } from 'react-native';
 
 const styles = StyleSheet.create({
   mainToolBar: {
@@ -28,19 +22,18 @@ const styles = StyleSheet.create({
     zIndex: 3,
   },
   boxShadow: {
-    shadowColor: "#000000",
+    shadowColor: '#000000',
     shadowOpacity: 0.2,
     shadowRadius: 16,
   },
   title: {
     color: 'white',
     fontSize: Platform.OS === 'ios' ? 42 : 20,
-  }
+  },
 });
 
-
 class ToolBar extends Component {
-  render () {
+  render() {
     return (
       <View style={[styles.mainToolBar, styles.boxShadow]}>
         <View>
@@ -52,10 +45,7 @@ class ToolBar extends Component {
 }
 
 const mapStateToProps = state => {
-  const {
-    totalSavingsAmount,
-    savingsAccountInfo,
-  } = state;
+  const { totalSavingsAmount, savingsAccountInfo } = state;
 
   return {
     totalSavingsAmount,

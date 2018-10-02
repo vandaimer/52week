@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  StyleSheet,
-  View,
-} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import ToolBar from './components/ToolBar';
 import WeekList from './components/WeekList';
 import BottomNavBar from './components/BottomNavBar';
-
 
 const styles = StyleSheet.create({
   main: {
@@ -16,13 +12,12 @@ const styles = StyleSheet.create({
   },
 });
 
-
 class Main extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
   }
 
-  render () {
+  render() {
     return (
       <View style={styles.main}>
         <ToolBar />
