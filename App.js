@@ -1,24 +1,17 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
 import { View } from 'react-native';
-import createSagaMiddleware from 'redux-saga';
+import createStore from 'unistore';
+import { Provider } from 'unistore/react';
 
 import Main from './scenes/Main';
-import reducers from './reducers';
-import rootSaga from './services';
+import { initialState } from './reducers';
 
-
-const sagaMiddleware = createSagaMiddleware();
-const store = createStore(reducers, applyMiddleware(sagaMiddleware));
-
-sagaMiddleware.run(rootSaga);
-
+const store = createStore(initialState);
 
 export default class App extends Component {
   render () {
     return (
-      <Provider store={ store }>
+      <Provider store={store}>
         <View style={ { flex: 1 } }>
           <Main/>
         </View>

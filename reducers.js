@@ -1,12 +1,14 @@
-import { combineReducers } from 'redux';
+const initialState = {
+  totalSavingsAmount: 0,
+  savingsAccountInfo: 0,
+};
 
-import {
-  totalSavingsAmount,
-  savingsAccountInfo,
-} from './scenes/Main/components/reducer';
-
-
-export default combineReducers({
-  totalSavingsAmount,
-  savingsAccountInfo,
+const actions = () => ({
+  maxSavingsAccoutAmount: () => {},
+  addToSavingsAccount: () => {},
+  removeFromSavingsAccount: () => {},
 });
+
+const props = ['savingsAccountInfo', 'totalSavingsAmount'];
+
+export { initialState, props, actions };

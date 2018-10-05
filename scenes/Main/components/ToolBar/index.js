@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Platform } from 'react-native';
+import { connect } from 'unistore/react'
+import { props, actions } from '../../../../reducers';
 
 const styles = StyleSheet.create({
   mainToolBar: {
@@ -44,18 +45,9 @@ class ToolBar extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { totalSavingsAmount, savingsAccountInfo } = state;
-
-  return {
-    totalSavingsAmount,
-    savingsAccountInfo,
-  };
-};
-
 ToolBar.propTypes = {
   savingsAccountInfo: PropTypes.number.isRequired,
   totalSavingsAmount: PropTypes.number.isRequired,
 };
 
-export default connect(mapStateToProps)(ToolBar);
+export default connect(props, actions)(ToolBar);

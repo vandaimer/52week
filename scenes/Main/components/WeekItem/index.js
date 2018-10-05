@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
+import { connect } from 'unistore/react'
+import { props, actions } from '../../../../reducers';
 
 const styles = StyleSheet.create({
   text: {
@@ -124,9 +123,4 @@ WeekItem.propTypes = {
   removeFromSavingsAccount: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
-
-export default connect(
-  null,
-  mapDispatchToProps,
-)(WeekItem);
+export default connect(props, actions)(WeekItem);

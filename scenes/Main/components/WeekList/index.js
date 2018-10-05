@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as actions from '../actions';
+import { connect } from 'unistore/react'
 import { StyleSheet, View, ScrollView } from 'react-native';
 import R from 'ramda';
 import WeekItem from '../WeekItem';
+import { props, actions } from '../../../../reducers';
 
 const styles = StyleSheet.create({
   container: {
@@ -56,13 +55,8 @@ class WeekList extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
-
 WeekList.propTypes = {
   maxSavingsAccoutAmount: PropTypes.func.isRequired,
 };
 
-export default connect(
-  null,
-  mapDispatchToProps,
-)(WeekList);
+export default connect(props, actions)(WeekList);

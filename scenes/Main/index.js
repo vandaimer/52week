@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
 import ToolBar from './components/ToolBar';
 import WeekList from './components/WeekList';
@@ -28,4 +27,4 @@ class Main extends Component {
   }
 }
 
-export default connect()(Main);
+export default (Main);

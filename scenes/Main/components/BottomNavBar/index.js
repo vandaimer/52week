@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Platform } from 'react-native';
+import { connect } from 'unistore/react'
+import { props, actions } from '../../../../reducers';
 
 const styles = StyleSheet.create({
   mainBottomNavBar: {
@@ -61,22 +62,9 @@ class BottomNavBar extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { totalSavingsAmount, savingsAccountInfo } = state;
-
-  var savingsPercentage = (totalSavingsAmount * 100) / savingsAccountInfo;
-  var savingsPercentage = savingsPercentage.toFixed(1);
-
-  return {
-    totalSavingsAmount,
-    savingsAccountInfo,
-    savingsPercentage,
-  };
-};
-
 BottomNavBar.propTypes = {
   savingsAccountInfo: PropTypes.number.isRequired,
   totalSavingsAmount: PropTypes.number.isRequired,
 };
 
-export default connect(mapStateToProps)(BottomNavBar);
+export default connect(props, actions)(BottomNavBar);
