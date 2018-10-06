@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
 });
 
 class ToolBar extends Component {
-  render() {
+  render () {
     return (
       <View style={[styles.mainToolBar, styles.boxShadow]}>
         <View>

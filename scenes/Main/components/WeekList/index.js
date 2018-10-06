@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 });
 
 class WeekList extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       weeks: [],
@@ -42,7 +42,7 @@ class WeekList extends Component {
     this.props.maxSavingsAccoutAmount(meta);
   }
 
-  render() {
+  render () {
     const createNewItem = item => {
       return <WeekItem key={item.index} week={item.index} value={item.value} />;
     };

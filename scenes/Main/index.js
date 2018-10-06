@@ -12,11 +12,11 @@ const styles = StyleSheet.create({
 });
 
 class Main extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
   }
 
-  render() {
+  render () {
     return (
       <View style={styles.main}>
         <ToolBar />

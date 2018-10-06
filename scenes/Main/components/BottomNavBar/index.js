@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
 });
 
 class BottomNavBar extends Component {
-  render() {
+  render () {
     return (
       <View style={[styles.mainBottomNavBar, styles.boxShadow]}>
         <View style={styles.contentBottonNavBar}>
@@ -65,6 +65,7 @@ class BottomNavBar extends Component {
 BottomNavBar.propTypes = {
   savingsAccountInfo: PropTypes.number.isRequired,
   totalSavingsAmount: PropTypes.number.isRequired,
+  savingsPercentage: PropTypes.number.isRequired,
 };
 
 export default connect(
