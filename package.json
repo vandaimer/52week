@@ -35,9 +35,8 @@
     "ramda": "^0.25.0",
     "react": "16.2.0",
     "react-native": "0.52.0",
-    "react-redux": "^5.0.6",
     "redux": "^3.7.2",
-    "redux-saga": "^0.16.0"
+    "unistore": "^3.1.0"
   },
   "lint-staged": {
     "*.js": [
