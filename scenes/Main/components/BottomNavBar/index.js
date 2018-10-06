@@ -6,7 +6,7 @@ import { props, actions } from '../../../../reducers';
 
 const styles = StyleSheet.create({
   mainBottomNavBar: {
-    height: Platform.OS === 'ios' ? 128 : 94,
+    height: Platform.OS === 'ios' ? 128 : 110,
     padding: 32,
   },
   boxShadow: {
