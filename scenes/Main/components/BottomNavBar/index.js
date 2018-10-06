@@ -48,8 +48,7 @@ class BottomNavBar extends Component {
           <View style={styles.labeledBox1}>
             <Text style={styles.text}>META</Text>
             <Text style={styles.textAmount}>
-              R$ {this.props.savingsAccountInfo} ({this.props.savingsPercentage}
-              %)
+              R$ {this.props.savingsAccountInfo} ({this.props.savingsPercentage}%)
             </Text>
           </View>
           <View style={styles.labeledBox2}>
