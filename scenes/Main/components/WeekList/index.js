@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'unistore/react'
+import { connect } from 'unistore/react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import R from 'ramda';
 import WeekItem from '../WeekItem';
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 });
 
 class WeekList extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       weeks: [],
@@ -42,7 +42,7 @@ class WeekList extends Component {
     this.props.maxSavingsAccoutAmount(meta);
   }
 
-  render() {
+  render () {
     const createNewItem = item => {
       return <WeekItem key={item.index} week={item.index} value={item.value} />;
     };
@@ -59,4 +59,7 @@ WeekList.propTypes = {
   maxSavingsAccoutAmount: PropTypes.func.isRequired,
 };
 
-export default connect(props, actions)(WeekList);
+export default connect(
+  props,
+  actions,
+)(WeekList);

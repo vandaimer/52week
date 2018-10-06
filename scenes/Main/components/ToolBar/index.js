@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, View, Platform } from 'react-native';
-import { connect } from 'unistore/react'
+import { connect } from 'unistore/react';
 import { props, actions } from '../../../../reducers';
 
 const styles = StyleSheet.create({
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
 });
 
 class ToolBar extends Component {
-  render() {
+  render () {
     return (
       <View style={[styles.mainToolBar, styles.boxShadow]}>
         <View>
@@ -50,4 +50,7 @@ ToolBar.propTypes = {
   totalSavingsAmount: PropTypes.number.isRequired,
 };
 
-export default connect(props, actions)(ToolBar);
+export default connect(
+  props,
+  actions,
+)(ToolBar);

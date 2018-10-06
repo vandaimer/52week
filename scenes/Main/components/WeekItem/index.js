@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
-import { connect } from 'unistore/react'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { connect } from 'unistore/react';
 import { props, actions } from '../../../../reducers';
 
 const styles = StyleSheet.create({
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
 });
 
 class WeekItem extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       isDeposited: false,
@@ -88,7 +88,7 @@ class WeekItem extends Component {
     this.setState({ isDeposited });
   };
 
-  render() {
+  render () {
     return (
       <View
         style={[
@@ -123,4 +123,7 @@ WeekItem.propTypes = {
   removeFromSavingsAccount: PropTypes.func.isRequired,
 };
 
-export default connect(props, actions)(WeekItem);
+export default connect(
+  props,
+  actions,
+)(WeekItem);
