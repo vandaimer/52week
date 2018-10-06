@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, View, Platform } from 'react-native';
-import { connect } from 'unistore/react'
+import { connect } from 'unistore/react';
 import { props, actions } from '../../../../reducers';
 
 const styles = StyleSheet.create({
@@ -48,7 +48,8 @@ class BottomNavBar extends Component {
           <View style={styles.labeledBox1}>
             <Text style={styles.text}>META</Text>
             <Text style={styles.textAmount}>
-              R$ {this.props.savingsAccountInfo} ({this.props.savingsPercentage}%)
+              R$ {this.props.savingsAccountInfo} ({this.props.savingsPercentage}
+              %)
             </Text>
           </View>
           <View style={styles.labeledBox2}>
@@ -66,4 +67,7 @@ BottomNavBar.propTypes = {
   totalSavingsAmount: PropTypes.number.isRequired,
 };
 
-export default connect(props, actions)(BottomNavBar);
+export default connect(
+  props,
+  actions,
+)(BottomNavBar);

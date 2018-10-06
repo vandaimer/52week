@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'unistore/react'
+import { connect } from 'unistore/react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import R from 'ramda';
 import WeekItem from '../WeekItem';
@@ -59,4 +59,7 @@ WeekList.propTypes = {
   maxSavingsAccoutAmount: PropTypes.func.isRequired,
 };
 
-export default connect(props, actions)(WeekList);
+export default connect(
+  props,
+  actions,
+)(WeekList);
