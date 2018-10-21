@@ -1,3 +1,7 @@
+import { AsyncStorage } from 'react-native';
+
+const APP_STORAGE = '@APP:KEY';
+
 const initialState = {
   totalSavingsAmount: 0,
   savingsAccountInfo: 0,
@@ -7,20 +11,34 @@ const initialState = {
 const calculateSavingsPercentage = (totalSavingsAmount, savingsAccountInfo) => ((totalSavingsAmount * 100) / savingsAccountInfo).toFixed(1);
 
 const actions = () => ({
-  maxSavingsAccoutAmount: (state, value) => ({ ...state, savingsAccountInfo: value }),
-  addToSavingsAccount: (state, value) => {
+  maxSavingsAccoutAmount: async (state, value) => {
+    const storage = await AsyncStorage.getItem(APP_STORAGE);
+    if (storage) return JSON.parse(storage);
+
+    const newState = { ...state, savingsAccountInfo: value };
+    await AsyncStorage.setItem(APP_STORAGE, JSON.stringify(newState));
+
+    return newState;
+  },
+  addToSavingsAccount: async (state, value) => {
     let { totalSavingsAmount, savingsAccountInfo } = state;
     totalSavingsAmount += value;
 
     const savingsPercentage = calculateSavingsPercentage(totalSavingsAmount, savingsAccountInfo);
-    return { totalSavingsAmount, savingsPercentage };
+    const newState = { ...state, totalSavingsAmount, savingsPercentage };
+    await AsyncStorage.setItem(APP_STORAGE, JSON.stringify(newState));
+
+    return newState;
   },
-  removeFromSavingsAccount: (state, value) => {
+  removeFromSavingsAccount: async (state, value) => {
     let { totalSavingsAmount, savingsAccountInfo } = state;
     totalSavingsAmount -= value;
 
     const savingsPercentage = calculateSavingsPercentage(totalSavingsAmount, savingsAccountInfo);
-    return { totalSavingsAmount, savingsPercentage };
+    const newState = { ...state, totalSavingsAmount, savingsPercentage };
+    await AsyncStorage.setItem(APP_STORAGE, JSON.stringify(newState));
+
+    return newState;
   },
 });
 
