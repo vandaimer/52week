@@ -37,6 +37,12 @@ const updateStorage = async newState => {
   await AsyncStorage.setItem(APP_STORAGE, JSON.stringify(newState));
 };
 
+const loadFromStorage = async state => {
+  const storage = await AsyncStorage.getItem(APP_STORAGE);
+  if (!storage) return state;
+  return JSON.parse(storage);
+};
+
 const actions = () => ({
   clear: async () => AsyncStorage.removeItem(APP_STORAGE),
   changeWeekItem: async (state, value, weekIndex) => {
@@ -54,6 +60,7 @@ const actions = () => ({
 
     return newState;
   },
+  loadFromStorage: async state => loadFromStorage(state),
 });
 
 const props = ['savingsAccountInfo', 'totalSavingsAmount', 'savingsPercentage', 'weeks'];
