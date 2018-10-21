@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
+import PropTypes from 'prop-types';
+import { connect } from 'unistore/react';
 import ToolBar from './components/ToolBar';
 import WeekList from './components/WeekList';
 import BottomNavBar from './components/BottomNavBar';
+import { actions } from '../../reducers';
 
 const styles = StyleSheet.create({
   main: {
@@ -12,8 +15,8 @@ const styles = StyleSheet.create({
 });
 
 class Main extends Component {
-  constructor (props) {
-    super(props);
+  componentDidMount () {
+    this.props.loadFromStorage();
   }
 
   render () {
@@ -27,4 +30,11 @@ class Main extends Component {
   }
 }
 
-export default Main;
+Main.propTypes = {
+  loadFromStorage: PropTypes.func.isRequired,
+};
+
+export default connect(
+  null,
+  actions,
+)(Main);
