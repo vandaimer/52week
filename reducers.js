@@ -29,6 +29,13 @@ const initialState = {
 };
 
 const calculateSavingsPercentage = (totalSavingsAmount, savingsAccountInfo) => ((totalSavingsAmount * 100) / savingsAccountInfo).toFixed(1);
+const updateStorage = async newState => {
+  const storage = await AsyncStorage.getItem(APP_STORAGE);
+  if (storage) {
+    await AsyncStorage.setItem(APP_STORAGE, JSON.stringify({ ...storage, ...newState }));
+  }
+  await AsyncStorage.setItem(APP_STORAGE, JSON.stringify(newState));
+};
 
 const actions = () => ({
   clear: async () => AsyncStorage.removeItem(APP_STORAGE),
