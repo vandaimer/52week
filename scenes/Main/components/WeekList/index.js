@@ -19,7 +19,7 @@ class WeekList extends Component {
     const { weeks } = this.props;
 
     const createNewItem = item => {
-      return <WeekItem key={item.index} week={item.index} value={item.value} />;
+      return <WeekItem key={item.index} week={item.index} value={item.value} isDeposited={item.isDeposited} />;
     };
 
     return (
