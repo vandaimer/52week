@@ -45,28 +45,12 @@ const actions = () => ({
     const isDeposited = !week.isDeposited;
     const newValue = totalSavingsAmount + (isDeposited ? value : value * -1);
     const savingsPercentage = calculateSavingsPercentage(newValue, savingsAccountInfo);
+
     week.isDeposited = isDeposited;
     weeks[weekIndex - 1] = week;
 
-    return { weeks, totalSavingsAmount: newValue, savingsPercentage };
-  },
-  addToSavingsAccount: async (state, value) => {
-    let { totalSavingsAmount, savingsAccountInfo } = state;
-    totalSavingsAmount += value;
-
-    const savingsPercentage = calculateSavingsPercentage(totalSavingsAmount, savingsAccountInfo);
-    const newState = { ...state, totalSavingsAmount, savingsPercentage };
-    // await AsyncStorage.setItem(APP_STORAGE, JSON.stringify(newState));
-
-    return newState;
-  },
-  removeFromSavingsAccount: async (state, value) => {
-    let { totalSavingsAmount, savingsAccountInfo } = state;
-    totalSavingsAmount -= value;
-
-    const savingsPercentage = calculateSavingsPercentage(totalSavingsAmount, savingsAccountInfo);
-    const newState = { ...state, totalSavingsAmount, savingsPercentage };
-    // await AsyncStorage.setItem(APP_STORAGE, JSON.stringify(newState));
+    const newState = { weeks, totalSavingsAmount: newValue, savingsPercentage };
+    await updateStorage(newState);
 
     return newState;
   },
