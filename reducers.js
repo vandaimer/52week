@@ -32,15 +32,6 @@ const calculateSavingsPercentage = (totalSavingsAmount, savingsAccountInfo) => (
 
 const actions = () => ({
   clear: async () => AsyncStorage.removeItem(APP_STORAGE),
-  maxSavingsAccoutAmount: async (state, value) => {
-    const storage = await AsyncStorage.getItem(APP_STORAGE);
-    if (storage) return JSON.parse(storage);
-
-    const newState = { ...state, savingsAccountInfo: value };
-    await AsyncStorage.setItem(APP_STORAGE, JSON.stringify(newState));
-
-    return newState;
-  },
   addToSavingsAccount: async (state, value) => {
     let { totalSavingsAmount, savingsAccountInfo } = state;
     totalSavingsAmount += value;
