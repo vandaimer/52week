@@ -1,16 +1,37 @@
+import R from 'ramda';
 import { AsyncStorage } from 'react-native';
 
 const APP_STORAGE = '@APP:KEY';
 
+const generatorWeekList = () => {
+  const weeks = R.range(1, 53);
+  const mininalDeposit = 5;
+
+  return weeks.map((week, i) => {
+    const index = i + 1;
+    const value = index * mininalDeposit;
+    return {
+      isDeposited: false,
+      value,
+      index,
+    };
+  });
+};
+
+const weeks = generatorWeekList();
+const savingsAccountInfo = weeks.reduce((acc, val) => acc + val.value, 0);
+
 const initialState = {
   totalSavingsAmount: 0,
-  savingsAccountInfo: 0,
   savingsPercentage: 0,
+  savingsAccountInfo,
+  weeks,
 };
 
 const calculateSavingsPercentage = (totalSavingsAmount, savingsAccountInfo) => ((totalSavingsAmount * 100) / savingsAccountInfo).toFixed(1);
 
 const actions = () => ({
+  clear: async () => AsyncStorage.removeItem(APP_STORAGE),
   maxSavingsAccoutAmount: async (state, value) => {
     const storage = await AsyncStorage.getItem(APP_STORAGE);
     if (storage) return JSON.parse(storage);
@@ -42,6 +63,6 @@ const actions = () => ({
   },
 });
 
-const props = ['savingsAccountInfo', 'totalSavingsAmount', 'savingsPercentage'];
+const props = ['savingsAccountInfo', 'totalSavingsAmount', 'savingsPercentage', 'weeks'];
 
 export { initialState, props, actions };
