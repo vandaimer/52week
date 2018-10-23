@@ -58,41 +58,18 @@ const styles = StyleSheet.create({
 });
 
 class WeekItem extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      isDeposited: false,
-      textValue: 'Depositar',
-      textColor: '#42ABF4',
-    };
-  }
-
   changeAmountSavingsAccount = () => {
-    const isDeposited = !this.state.isDeposited;
     const value = parseInt(this.props.value, 0);
+    const { week } = this.props;
 
-    if (isDeposited) {
-      this.props.addToSavingsAccount(value);
-      this.setState({
-        textValue: 'Depositado',
-        textColor: 'white',
-      });
-    } else {
-      this.props.removeFromSavingsAccount(value);
-      this.setState({
-        textValue: 'Depositar',
-        textColor: '#42ABF4',
-      });
-    }
-
-    this.setState({ isDeposited });
+    this.props.changeWeekItem(value, week);
   };
 
   render () {
     return (
       <View
         style={[
-          this.state.isDeposited ? styles.itemListDeposited : styles.itemList,
+          this.props.isDeposited ? styles.itemListDeposited : styles.itemList,
           styles.basicList,
         ]}
       >
@@ -102,13 +79,13 @@ class WeekItem extends Component {
         </View>
         <TouchableOpacity
           style={[
-            this.state.isDeposited ? styles.btnDeposited : styles.btnNotDeposited,
+            this.props.isDeposited ? styles.btnDeposited : styles.btnNotDeposited,
             styles.basicCommand,
           ]}
           onPress={this.changeAmountSavingsAccount}
         >
-          <Text style={this.state.isDeposited ? styles.textDeposited : styles.textNotDeposited}>
-            {this.state.textValue}
+          <Text style={this.props.isDeposited ? styles.textDeposited : styles.textNotDeposited}>
+            {this.props.isDeposited ? 'Depositado' : 'Depositar'}
           </Text>
         </TouchableOpacity>
       </View>
@@ -119,8 +96,7 @@ class WeekItem extends Component {
 WeekItem.propTypes = {
   week: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
-  addToSavingsAccount: PropTypes.func.isRequired,
-  removeFromSavingsAccount: PropTypes.func.isRequired,
+  changeWeekItem: PropTypes.func.isRequired,
 };
 
 export default connect(

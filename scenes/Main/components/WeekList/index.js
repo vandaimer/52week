@@ -15,41 +15,16 @@ const styles = StyleSheet.create({
 });
 
 class WeekList extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      weeks: [],
-    };
-
-    const weeks = R.range(1, 53);
-    const mininalDeposit = 5;
-    let meta = 0;
-
-    R.forEach(index => {
-      const value = index * mininalDeposit;
-
-      // const percentage = value * 100 / savingsAccountInfo;
-
-      this.state.weeks.push({
-        isDeposited: false,
-        value,
-        index,
-      });
-
-      meta += value;
-    }, weeks);
-
-    this.props.maxSavingsAccoutAmount(meta);
-  }
-
   render () {
+    const { weeks } = this.props;
+
     const createNewItem = item => {
-      return <WeekItem key={item.index} week={item.index} value={item.value} />;
+      return <WeekItem key={item.index} week={item.index} value={item.value} isDeposited={item.isDeposited} />;
     };
 
     return (
       <View style={styles.container}>
-        <ScrollView>{R.map(createNewItem, this.state.weeks)}</ScrollView>
+        <ScrollView>{R.map(createNewItem, weeks)}</ScrollView>
       </View>
     );
   }
@@ -57,6 +32,7 @@ class WeekList extends Component {
 
 WeekList.propTypes = {
   maxSavingsAccoutAmount: PropTypes.func.isRequired,
+  weeks: PropTypes.array.isRequired,
 };
 
 export default connect(
